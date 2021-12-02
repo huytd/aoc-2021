@@ -11,9 +11,8 @@ fn read_input() -> Vec<Direction> {
     if let Ok(lines) = read_lines_from("./data/day02.txt") {
         for line in lines {
             if let Ok(line) = line {
-                let mut split = line.split(" ");
-                let cmd = split.next().unwrap();
-                let num = split.next().unwrap().parse::<i32>().unwrap();
+                let (cmd, num) = line.split_once(" ").unwrap();
+                let num = num.parse::<i32>().unwrap();
                 let parsed = match cmd {
                     "forward" => Direction::Forward(num),
                     "up" => Direction::Up(num),
