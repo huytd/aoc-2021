@@ -4,7 +4,7 @@ mod lib;
 mod challenges;
 
 fn main() {
-    // Day 5
-    challenges::day05::part_one();
-    challenges::day05::part_two();
+    // Day 6
+    challenges::day06::part_one();
+    challenges::day06::part_two();
 }

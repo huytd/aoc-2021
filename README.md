@@ -68,3 +68,30 @@ For diagonal lines, any [line drawing algorithm](https://en.m.wikipedia.org/wiki
 using the naive line drawing algorithm is enough.
 
 When we have the list of all points, find the duplicate points and count the number of them.
+
+### Day 06
+
+Interesting problem today. The straight forward approach is iterate through the list of fish, decrease their counter and add a new fish into the list as they spawn.
+
+This does not works in part 2, for obvious reason, the fishes grow exponentially.
+
+If we look at the input data the different way, instead of a list of numbers, think about a hash map where each key is the count of how many days left for that fish.
+
+```
+Input: 3, 4, 3, 1, 2
+
+Hashmap:
+[key = 0; value = 0]
+[key = 1; value = 1]
+[key = 2; value = 1]
+[key = 3; value = 2]
+[key = 4; value = 0]
+[key = 5; value = 0]
+[key = 6; value = 0]
+[key = 7; value = 0]
+[key = 8; value = 0]
+```
+
+Now, for each generation `n`, we decrease the value of `hashmap[n]` and increase the `hashmap[n-1]` by `1`. That mean we just rotated the values by 1 position.
+
+So, if we keep rotate until we reach the end of the generation, and add new fishes as they spawn to the list, the sum of all entries in the hashmap is the number we're looking for.
